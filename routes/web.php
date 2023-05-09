@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/users',[\App\Http\Controllers\UsersController::class, 'index']);
-Route::get('/user/{id}',[\App\Http\Controllers\UsersController::class, 'show'])->name('user.show');
-Route::get('/users/edit/{id}',[\App\Http\Controllers\UsersController::class, 'edit'])->name('user.edit');
-Route::put('/user/update/{id}', [\App\Http\Controllers\UsersController::class, 'update'])->name('user.update');
+Route::get('/users',[UsersController::class, 'index']);
+Route::get('/user/{id}',[UsersController::class, 'show'])->name('user.show');
+Route::get('/users/edit/{id}',[UsersController::class, 'edit'])->name('user.edit');
+Route::put('/user/update/{id}', [UsersController::class, 'update'])->name('user.update');
+Route::delete('/user/delete{id}', [UsersController::class, 'destroy'])->name('user.destroy');

@@ -22,6 +22,7 @@
             <th scope="col">Email</th>
             <th scope="col">Visualizar</th>
             <th scope="col">Editar</th>
+            <th scope="col">Excluir</th>
         </tr>
         </thead>
         <tbody>
@@ -35,6 +36,13 @@
             </td>
             <td>
                 <a type="button" href="{{route('user.edit', $user->id)}}" class="btn btn-warning">Editar</a>
+            </td>
+            <td>
+                <form action="{{route('user.destroy', $user->id)}}" method="post">
+                    @method('delete')
+                    @csrf
+                    <button type="submit" class="btn btn-danger">Excluir</button>
+                </form>
             </td>
         </tr>
         @endforeach

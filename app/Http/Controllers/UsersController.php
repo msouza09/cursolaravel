@@ -24,18 +24,17 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $data = $request->only(['name', 'email']);
+
+        $data['password'] = bcrypt('password');
+
+        User::create($data);
+        return redirect()->route('users.index');
     }
 
     public function show($id)

@@ -14,7 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/users',[UsersController::class, 'index']);
+Route::get('/', function (){
+    return redirect()->route('users.index');
+});
+
+Route::get('/users/add', [UsersController::class, 'create'])->name('user.create');
+Route::post('/users/add', [UsersController::class, 'store'])->name('user.store');
+Route::get('/users',[UsersController::class, 'index'])->name('users.index');
 Route::get('/user/{id}',[UsersController::class, 'show'])->name('user.show');
 Route::get('/users/edit/{id}',[UsersController::class, 'edit'])->name('user.edit');
 Route::put('/user/update/{id}', [UsersController::class, 'update'])->name('user.update');
